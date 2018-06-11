@@ -68,14 +68,14 @@
 
   		<div class="col-xs-6">
   			<label>Select Vehicle</label>
-  			<select>
-  				<option>NA-6447</option>
+  			<select  id="vehicle" onchange="return setData()">
+  				
   			</select>
   		</div>
 
         <div class="col-xs-6">
         	<label>Assigned Route</label>
-        	<input type="text" name="Assroute" placeholder="Route Details">
+        	<input type="text" name="Assroute" id="Assroute" placeholder="Route Details">
         </div>
 
   	</div>
@@ -89,16 +89,16 @@
   				<div class="col-xs-3">
   					<br><br>
   					<label>Driver</label>
-  					<input type="text" name="Drivername" placeholder="Driver Name">
+  					<input type="text" name="Drivername" id="Drivername" placeholder="Driver Name">
   					<br><br>
   					<label>Helper 1</label>
-  					<input type="text" name="Helperone" placeholder="Helper Name">
+  					<input type="text" name="Helperone" id="Helperone" placeholder="Helper Name">
   					<br><br>
   					<label>Helper 2</label>
-  					<input type="text" name="Helpertwo" placeholder="Helper Name">
+  					<input type="text" name="Helpertwo" id="Helpertwo" placeholder="Helper Name">
   					<br><br>
   					<label>Helper 3</label>
-  					<input type="text" name="Helperthree" placeholder="Helper Name">
+  					<input type="text" name="Helperthree" id="Helperthree" placeholder="Helper Name">
   					<br><br>
   				</div>
   				<div class="col-xs-3">
@@ -134,8 +134,9 @@
   	</div>
   </div>
 
-
-
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script type="text/javascript" src="js/record.js"></script>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>

@@ -225,3 +225,15 @@ function refreshData()
 		}
 	});
 }
+
+//search function
+
+$(document).ready(function(){
+  $("#vehicleInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#table1 tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
