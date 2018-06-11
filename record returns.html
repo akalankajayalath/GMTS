@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CMC - Record Returns</title><!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"><!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet"><!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet"><!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Colombo Municipal Council</a>
+        </div>
+        <div class="menu1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">User Management</a>
+            </li>
+            <li>
+              <a href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <img src="img/header.jpg">
+    </div>
+    <nav>
+      <div class="nav nav-pills nav-stacked menu2">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="vehicle assignment.html">Vehicle Assignment</a>
+          </li>
+          <li>
+            <a href="record returns.html">Record Returns</a>
+          </li>
+          <li>
+            <a href="track vehicles.html">Track Vehicles</a>
+          </li>
+          <li>
+            <a href="Details Management.html">Details Management</a>
+          </li>
+          <li>
+            <a href="#">Schedules Management</a>
+          </li>
+          <li>
+            <a href="#">Reports</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <br><br>
+  <div class="container">
+  	<div class="row">
+
+  		<div class="col-xs-6">
+  			<label>Select Vehicle</label>
+  			<select>
+  				<option>NA-6447</option>
+  			</select>
+  		</div>
+
+        <div class="col-xs-6">
+        	<label>Assigned Route</label>
+        	<input type="text" name="Assroute" placeholder="Route Details">
+        </div>
+
+  	</div>
+  </div>
+  <br><br>
+  <div class="container">
+  	<div class="row">
+  		<form name="Summary Returns" class="Returns">
+  			<fieldset>
+  				<legend>Assigned Worker Details</legend>
+  				<div class="col-xs-3">
+  					<br><br>
+  					<label>Driver</label>
+  					<input type="text" name="Drivername" placeholder="Driver Name">
+  					<br><br>
+  					<label>Helper 1</label>
+  					<input type="text" name="Helperone" placeholder="Helper Name">
+  					<br><br>
+  					<label>Helper 2</label>
+  					<input type="text" name="Helpertwo" placeholder="Helper Name">
+  					<br><br>
+  					<label>Helper 3</label>
+  					<input type="text" name="Helperthree" placeholder="Helper Name">
+  					<br><br>
+  				</div>
+  				<div class="col-xs-3">
+  					<label>Start Time</label>
+  					<br><br>
+  					<input type="time" name="Drivertime">
+  					<br><br>
+  					<input type="time" name="Helperonetime">
+                    <br><br>
+                    <input type="time" name="Helpertwotime">
+                    <br><br>
+                    <input type="time" name="Helperthreetime">  
+  				</div>
+  				<div class="col-xs-3">
+  					<label>End Time</label>
+  					<br><br>
+  					<input type="time" name="Driverendtime">
+  					<br><br>
+  					<input type="time" name="Helperoneendtime">
+                    <br><br>
+                    <input type="time" name="Helpertwoendtime">
+                    <br><br>
+                    <input type="time" name="Helperthreeendtime">  
+  				</div>
+  				<div class="col-xs-3">
+  					<br><br><br>
+  					<button type="submit">Confirm</button><br><br>
+  					<button type="reset">Reset</button><br><br>
+  					<button type="">Cancel</button>
+  				</div>
+  			</fieldset>
+  		</form>
+  	</div>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+
+  </body>
+</html>

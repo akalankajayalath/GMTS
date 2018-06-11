@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CMC - Details Management</title><!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"><!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet"><!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet"><!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-default navmain">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="color: white" >Colombo Municipal Council</a>
+        </div>
+        <div class="menu1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a style="color: white" href="#" >About Us</a>
+            </li>
+            <li>
+              <a href="#" style="color: white">User Management</a>
+            </li>
+            <li>
+              <a href="#" style="color: white">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <img src="img/header.jpg">
+    </div>
+    <nav>
+      <div class="nav nav-pills nav-stacked menu2">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="vehicle assignment.html">Vehicle Assignment</a>
+          </li>
+          <li>
+            <a href="record returns.html">Record Returns</a>
+          </li>
+          <li>
+            <a href="track vehicles.html">Track Vehicles</a>
+          </li>
+          <li>
+            <a href="#">Details Management</a>
+          </li>
+          <li>
+            <a href="#">Schedules Management</a>
+          </li>
+          <li>
+            <a href="#">Reports</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- add user module -->
+<div class="row">
+  <div class="col-sm-6" ">
+  <section id="add-user-module" >
+  <button id="open-add-user-form-btn" class="btn-form">Click to Add New User</button>
+  <form>
+    <h2>Add User</h2>
+    NIC no.:<br>
+    <input type='text' data-key='nic' class='user-input'><br>
+    first name:<br>
+    <input type='text' data-key='fname' class='user-input'><br>
+    last name:<br>
+    <input type='text' data-key='lname' class='user-input'><br>
+    contact no:<br>
+    <input type='text' data-key='telephone' class='user-input'><br>
+    user type :
+    <select name="type" data-key='type' class="user-input" id="user-input">
+      <option value="driver">driver</option>
+      <option value="worker">worker</option>
+    </select><br>
+    <button type='button' id="add-user-btn">add user</button>
+  </form>
+  </section>
+  </div>
+
+
+<!-- edit user module -->
+    <section id="edit-user-module">
+        <form>
+            <h2>Edit user</h2>
+            <input type="hidden" class="edit-userid">
+            NIC no.:<br>
+            <input type='text' data-key='nic' class='edit-user-input'><br>
+            first name:<br>
+            <input type='text' data-key='fname' class='edit-user-input'><br>
+            last name:<br>
+            <input type='text' data-key='lname' class='edit-user-input'><br>
+            contact no:<br>
+            <input type='text' data-key='telephone' class='edit-user-input'><br>
+            user type :
+            <select name="type" data-key='type' class='edit-user-input'>
+              <option value="driver">driver</option>
+              <option value="worker">worker</option>
+            </select><br>
+            <button type='button' id="edit-user-btn">save</button>
+        </form>
+    </section>
+
+   <!-- show user module -->
+
+  
+  <div class="col-sm-6" style="margin-left: 600px;">
+     <ul id="user-list"></ul>
+     <div id="user-detail"></div>
+  </div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</body>
+</html>
