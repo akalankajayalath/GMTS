@@ -10,25 +10,30 @@
   <link href="css/elegant-icons-style.css" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet"><!-- Custom styles -->
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/record.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navmain">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Colombo Municipal Council</a>
+          <a class="navbar-brand" href="#" style="color: white">Colombo Municipal Council</a>
+          
         </div>
         <div class="menu1">
           <ul class="nav navbar-nav">
+
+              <iframe src="http://free.timeanddate.com/clock/i6a4daug/n5364/ftb/tt0/tw0/tm1/th2/ta1/tb4" frameborder="0" width="108" height="34" style="margin-top: 8px; margin-left: 10px;"></iframe>
+
             <li>
-              <a href="#">About Us</a>
+              <a href="#" style="color: white">About Us</a>
             </li>
             <li>
-              <a href="#">User Management</a>
+              <a href="#" style="color: white">User Management</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <a href="#" onclick="logout()" style="color: white">Logout</a>
             </li>
           </ul>
         </div>
@@ -83,13 +88,13 @@
   <br><br>
   <div class="container">
   	<div class="row">
-  		<form name="Summary Returns" class="Returns">
+  		<form name="Summary Returns" id="Returns" class="Returns">
   			<fieldset>
   				<legend>Assigned Worker Details</legend>
   				<div class="col-xs-3">
   					<br><br>
   					<label>Driver</label>
-  					<input type="text" name="Drivername" id="Drivername" placeholder="Driver Name">
+  					<input type="text" name="Drivername" id="Drivername" placeholder="Driver Name" style="margin-left: 14px;">
   					<br><br>
   					<label>Helper 1</label>
   					<input type="text" name="Helperone" id="Helperone" placeholder="Helper Name">
@@ -104,40 +109,83 @@
   				<div class="col-xs-3">
   					<label>Start Time</label>
   					<br><br>
-  					<input type="time" name="Drivertime">
+  					<input type="text" name="Drivertime" id="Drivertime">
   					<br><br>
-  					<input type="time" name="Helperonetime">
-                    <br><br>
-                    <input type="time" name="Helpertwotime">
-                    <br><br>
-                    <input type="time" name="Helperthreetime">  
+  					<input type="text" name="Helperonetime" id="Helperonetime">
+            <br><br>
+            <input type="text" name="Helpertwotime" id="Helpertwotime">
+            <br><br>
+            <input type="text" name="Helperthreetime" id="Helperthreetime">  
   				</div>
   				<div class="col-xs-3">
   					<label>End Time</label>
   					<br><br>
-  					<input type="time" name="Driverendtime">
+  					<input type="text" name="Driverendtime" id="Driverendtime">
   					<br><br>
-  					<input type="time" name="Helperoneendtime">
-                    <br><br>
-                    <input type="time" name="Helpertwoendtime">
-                    <br><br>
-                    <input type="time" name="Helperthreeendtime">  
+  					<input type="text" name="Helperoneendtime" id="Helperoneendtime">
+            <br><br>
+            <input type="text" name="Helpertwoendtime" id="Helpertwoendtime">
+            <br><br>
+            <input type="text" name="Helperthreeendtime" id="Helperthreeendtime">  
   				</div>
   				<div class="col-xs-3">
-  					<br><br><br>
-  					<button type="submit">Confirm</button><br><br>
-  					<button type="reset">Reset</button><br><br>
-  					<button type="">Cancel</button>
+  					<br><br>
+  					<button type="button" class="btn btn-large btn-primary btb" style="width: 190px;" onclick="saveData()">Confirm</button><br><br>
+  					<button type="reset" class="btn btn-warning" style="width: 190px;" onclick="document.getElementById('Returns').reset();">Reset</button><br><br>
+            <button type="button" class=" btn btn-danger" style="width: 190px;">Cancel</button><br><br>
+            <button type="button" class=" btn btn-info" style="width: 190px;" onclick="showSysTime()">Add System Time</button><br><br>
+            <button type="button" class=" btn btn-info" style="width: 190px;"  onclick="document.getElementById('id04').style.display='block'; refreshData();" style="width:auto;">View Daily Summary</button>
   				</div>
   			</fieldset>
   		</form>
-  	</div>
+    </div>
+    
+    <div id="id04" class="modal" style="width: 100%;">
+        <form class="modal-content animate">
+          <div class="container">
+      
+            <input type="text" id="vehicleInput" placeholder="Search..." title="Type in a name"><br>
+      
+            <table class="table" id="table1" >
+              <thead>
+                <tr>
+                  
+                  <th>Driver Name</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Helper One</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Helper Two</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Helper Three</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Vehicle Number</th>
+                </tr>
+              </thead>
+              <tbody>
+              </body>
+            </table>
+              
+           
+          </div>
+      
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button> 
+          </div>
+        </form>
+      </div>
+
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
   <script type="text/javascript" src="js/record.js"></script>
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+   
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
