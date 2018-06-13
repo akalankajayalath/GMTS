@@ -140,3 +140,18 @@ $(document).ready(function(){
     });
   });
 });
+
+
+$('#printbutton').click(function() {
+  $('#table1').remove(); //removes any previously generated html table from the div
+  var table = $("#example-table").tabulator("getHtml", "true"); //true option preserves current sort 
+  $('#table1').append(table);
+  $('#table1>table').attr("id", "table");
+  var elem = $("#table");
+  var doc = new jsPDF('l', 'pt'); //set document to landscape, better for most tables
+  var res = doc.autoTableHtmlToJson(elem);
+  doc.autoTable(res.columns, res.data, { 
+        //additional autotable options go in here - see website for details*
+  })
+  doc.save('myPDF.pdf');
+});

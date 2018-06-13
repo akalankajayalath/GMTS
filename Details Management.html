@@ -17,7 +17,7 @@
     <nav class="navbar navbar-default navmain">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#" style="color: white" >Colombo Municipal Council</a>
+          <a class="navbar-brand" href="#" style="color: white" >Colombo Municipal Council <b style="font-style: italic;font-size: 15px;">>>> Details Management Page</b></a>
         </div>
         <div class="menu1">
             <iframe src="http://free.timeanddate.com/clock/i6a4daug/n5364/ftb/tt0/tw0/tm1/th2/ta1/tb4" frameborder="0" width="108" height="34" style="margin-top: 8px; margin-left: 10px;"></iframe>
@@ -66,23 +66,23 @@
 
   <!-- add user module -->
 <div class="row">
-  <div class="col-sm-6" ">
+  <div class="col-sm-6" >
   <section id="add-user-module" >
-  <button id="open-add-user-form-btn" class="btn-form">Click to Add New User</button>
+  <button id="open-add-user-form-btn" class="btn-form">Click to Add New Employee</button>
   <form>
-    <h2>Add User</h2>
+    <h2>Add Employee</h2>
     NIC no.:<br>
     <input type='text' data-key='nic' class='user-input'><br>
-    first name:<br>
+    First Name:<br>
     <input type='text' data-key='fname' class='user-input'><br>
-    last name:<br>
+    Last Name:<br>
     <input type='text' data-key='lname' class='user-input'><br>
-    contact no:<br>
+    Contact No:<br>
     <input type='text' data-key='telephone' class='user-input'><br>
-    user type :
+    User Type :
     <select name="type" data-key='type' class="user-input" id="user-input">
-      <option value="driver">driver</option>
-      <option value="worker">worker</option>
+      <option value="driver">Driver</option>
+      <option value="worker">Worker</option>
     </select><br>
     <button type='button' id="add-user-btn">add user</button>
   </form>
@@ -93,20 +93,20 @@
 <!-- edit user module -->
     <section id="edit-user-module">
         <form>
-            <h2>Edit user</h2>
+            <h2>Edit Employee</h2>
             <input type="hidden" class="edit-userid">
             NIC no.:<br>
             <input type='text' data-key='nic' class='edit-user-input'><br>
-            first name:<br>
+            First Name:<br>
             <input type='text' data-key='fname' class='edit-user-input'><br>
-            last name:<br>
+            Last Name:<br>
             <input type='text' data-key='lname' class='edit-user-input'><br>
-            contact no:<br>
+            Contact No:<br>
             <input type='text' data-key='telephone' class='edit-user-input'><br>
-            user type :
+            User Type :
             <select name="type" data-key='type' class='edit-user-input'>
-              <option value="driver">driver</option>
-              <option value="worker">worker</option>
+              <option value="driver">Driver</option>
+              <option value="worker">Worker</option>
             </select><br>
             <button type='button' id="edit-user-btn">save</button>
         </form>
@@ -119,6 +119,12 @@
      <ul id="user-list"></ul>
      <div id="user-detail"></div>
   </div>
+</div>
+
+<div class="col-sm-6" style="margin-left: 600px;">
+    <ul id="driver-list"></ul>
+    <div id="driver-detail"></div>
+ </div>
 </div>
 
 
