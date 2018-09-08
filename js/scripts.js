@@ -24,10 +24,8 @@ function readUserData() {
 
   const userListUI = document.getElementById("user-list");
 
-
- 
   const usersRef = dbRef.child('users').child('driver');
-  
+ 
   usersRef.on("value", snap => {
 
     userListUI.innerHTML = ""
@@ -36,6 +34,7 @@ function readUserData() {
 
       let key = childSnap.key,
         value = childSnap.val();
+  
 
         
       let $li = document.createElement("li");
@@ -64,10 +63,7 @@ function readUserData() {
 
     });
 
-
   })
-
-  
 
 }
 
