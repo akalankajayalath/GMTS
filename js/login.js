@@ -9,11 +9,6 @@
   };
   firebase.initializeApp(config);
 
-
-
-
-  
-
   const txtusername = document.getElementById('txtusername').value;
   const txtpassword = document.getElementById('txtpassword').value;
   const btnlogin = document.getElementById('btnlogin');
