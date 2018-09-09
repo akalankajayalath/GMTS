@@ -1,4 +1,4 @@
-
+  var nextkey =0;
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAntw6caDUi5fd_TNT4UzurY0OTFEWfjec",
@@ -11,196 +11,102 @@
   firebase.initializeApp(config);
 
 
-
- // Details management page
-
- // --------------------------
-// READ
-// --------------------------
-const dbRef = firebase.database().ref();
-readUserData(); 
-
-function readUserData() {
-
-  const userListUI = document.getElementById("user-list");
-
-  const usersRef = dbRef.child('users').child('driver');
- 
-  usersRef.on("value", snap => {
-
-    userListUI.innerHTML = ""
-
-    snap.forEach(childSnap => {
-
-      let key = childSnap.key,
-        value = childSnap.val();
+ var tblUsers = document.getElementById('tbl_users_list');
+  var databaseRef = firebase.database().ref('users/driver');
+  var rowIndex = 1;
   
-
-        
-      let $li = document.createElement("li");
-
-      // edit icon
-      let editIconUI = document.createElement("span");
-      editIconUI.class = "edit-user";
-      editIconUI.innerHTML = " ✎";
-      editIconUI.setAttribute("userid", key);
-      editIconUI.addEventListener("click", editButtonClicked)
-
-      // delete icon
-      let deleteIconUI = document.createElement("span");
-      deleteIconUI.class = "delete-user";
-      deleteIconUI.innerHTML = " ☓";
-      deleteIconUI.setAttribute("userid", key);
-      deleteIconUI.addEventListener("click", deleteButtonClicked)
-      
-      $li.innerHTML = value.fname;
-      $li.append(editIconUI);
-      $li.append(deleteIconUI);
-
-      $li.setAttribute("user-key", key);
-      $li.addEventListener("click", userClicked)
-      userListUI.append($li);
-
+  databaseRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+   var childKey = childSnapshot.key;
+   var childData = childSnapshot.val();
+   
+   var row = tblUsers.insertRow(rowIndex);
+   var cellId = row.insertCell(0);
+   var cellName = row.insertCell(1);
+   var celllName = row.insertCell(2);
+   var celltp = row.insertCell(3);
+   var cellnic= row.insertCell(4);
+   cellId.appendChild(document.createTextNode(childKey));
+   cellName.appendChild(document.createTextNode(childData.fname));
+   celllName.appendChild(document.createTextNode(childData.lname));
+   celltp.appendChild(document.createTextNode(childData.tp));
+   cellnic.appendChild(document.createTextNode(childData.nic));
+   
+   rowIndex = rowIndex + 1;
     });
+  });
+   
+  function save_user(){
+   var user_name = document.getElementById('user_name').value;
+   var user_lname = document.getElementById('last_name').value;
+   var user_tp = document.getElementById('tp').value;
+   var user_nic = document.getElementById('nic').value;
 
-  })
-
-}
-
-function userClicked(e) {
-
-
-    var userID = e.target.getAttribute("user-key");
-
-    const dbRef = firebase.database().ref();
-    const userRef = dbRef.child('users').child('driver/' + userID);
-    const userDetailUI = document.getElementById("user-detail");
-
-    userRef.on("value", snap => {
-
-      userDetailUI.innerHTML = ""
-
-      snap.forEach(childSnap => {
-        var $p = document.createElement("p");
-        $p.innerHTML = childSnap.key  + " - " +  childSnap.val();
-        userDetailUI.append($p);
-      })
-
-    });
   
-
-}
-
-
- //Add user
-
-const addUserBtnUI = document.getElementById("add-user-btn");
-addUserBtnUI.addEventListener("click", addUserBtnClicked);
-
-function addUserBtnClicked() {
-
-  const dbRef = firebase.database().ref();
-  const usersRef = dbRef.child('users').child('driver');
-  const workersRef = dbRef.child('users').child('worker');
-  const addUserInputsUI = document.getElementsByClassName("user-input");
-
-  // this object will hold the new user information
-  let newUser = {};
-
-  for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
-
-    let key = addUserInputsUI[i].getAttribute('data-key');
-    let value = addUserInputsUI[i].value;
-    newUser[key] = value;
+   var uid = firebase.database().ref().child('users').child('driver').push().key;
+   
+   var data = {
+    user_id: uid,
+    fname: user_name,
+    lname:user_lname,
+    tp:user_tp,
+    nic:user_nic
+   }
+   
+   var updates = {};
+   updates['/users/driver/' + uid] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is created successfully!');
+   reload_page();
   }
-  if(document.getElementById("user-input").value == "driver"){
-        usersRef.push(newUser, function(){
-        alert("New driver has been inserted");
-  })
+  
+  function update_user(){
+   var user_name = document.getElementById('user_name').value;
+   var user_id = document.getElementById('user_id').value;
+   var user_lname = document.getElementById('last_name').value;
+   var user_tp = document.getElementById('tp').value;
+   var user_nic = document.getElementById('nic').value;
+
+   var data = {
+    user_id: user_id,
+    fname: user_name,
+    lname:user_lname,
+    tp:user_tp,
+    nic:user_nic
+   }
+   
+   var updates = {};
+   updates['/users/driver/' + user_id] = data;
+   firebase.database().ref().update(updates);
+   
+   alert('The user is updated successfully!');
+   
+   reload_page();
+  }
+  
+  function delete_user(){
+   var user_id = document.getElementById('user_id').value;
+  
+   firebase.database().ref().child('/users/driver/' + user_id).remove();
+   alert('The user is deleted successfully!');
+   reload_page();
+  }
+  
+  function reload_page(){
+   window.location.reload();
   }
 
-  else if(document.getElementById("user-input").value == "worker"){
-        workersRef.push(newUser, function(){
-        alert("New user has been inserted");
-})
-}
-
-}
-
-// --------------------------
-// DELETE
-// --------------------------
-function deleteButtonClicked(e) {
-
-    e.stopPropagation();
-
-    var userID = e.target.getAttribute("userid");
-
-    const userRef = dbRef.child('users').child('driver/' + userID);
+  function LoadFunction(){
+    var user_id = document.getElementById('user_id').value;
     
-    userRef.remove();
-
-}
-
-
-// --------------------------
-// EDIT
-// --------------------------
-function editButtonClicked(e) {
-  
-  document.getElementById('edit-user-module').style.display = "block";
-
-  //set user id to the hidden input field
-  document.querySelector(".edit-userid").value = e.target.getAttribute("userid");
-
-  const userRef = dbRef.child('users').child('driver/' + e.target.getAttribute("userid"));
-
-  // set data to the user field
-  const editUserInputsUI = document.querySelectorAll(".edit-user-input");
-
-
-  userRef.on("value", snap => {
-
-    for(var i = 0, len = editUserInputsUI.length; i < len; i++) {
-
-      var key = editUserInputsUI[i].getAttribute("data-key");
-          editUserInputsUI[i].value = snap.val()[key];
-
-    }
-
-  });
-
-
-
-
-  const saveBtn = document.querySelector("#edit-user-btn");
-  saveBtn.addEventListener("click", saveUserBtnClicked)
-}
-
-
-function saveUserBtnClicked(e) {
- 
-  const userID = document.querySelector(".edit-userid").value;
-  const userRef = dbRef.child('users').child('driver/' + userID);
-
-  var editedUserObject = {}
-
-  const editUserInputsUI = document.querySelectorAll(".edit-user-input");
-
-  editUserInputsUI.forEach(function(textField) {
-    let key = textField.getAttribute("data-key");
-    let value = textField.value;
-      editedUserObject[textField.getAttribute("data-key")] = textField.value
-  });
-
-
-
-  userRef.update(editedUserObject);
-
-  document.getElementById('edit-user-module').style.display = "none";
-
-
-}
-
+    ref = firebase.database().ref().child('/users/driver/' + user_id);
+    ref.on("value", function(snapshot){
+      document.getElementById('user_name').value= snapshot.child("fname").val();
+      document.getElementById('last_name').value= snapshot.child("lname").val();
+      document.getElementById('tp').value= snapshot.child("tp").val();
+      document.getElementById('nic').value= snapshot.child("nic").val();
+      });
+  }
 
 
