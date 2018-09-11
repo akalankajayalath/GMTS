@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CMC - Schedules Management</title><!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"><!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet"><!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet"><!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/schedules.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-default navmain">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="color: white">Colombo Municipal Council <b style="font-style: italic;font-size: 15px;">>>> Schedules Management Page</b></a>
+          
+        </div>
+        <div class="menu1">
+          <ul class="nav navbar-nav">
+
+              <iframe src="http://free.timeanddate.com/clock/i6a4daug/n5364/ftb/tt0/tw0/tm1/th2/ta1/tb4" frameborder="0" width="108" height="34" style="margin-top: 8px; margin-left: 10px;"></iframe>
+
+            <li>
+              <a href="#" style="color: white">About Us</a>
+            </li>
+            <li>
+              <a href="#" style="color: white">User Management</a>
+            </li>
+            <li>
+              <a href="#" onclick="logout()" style="color: white">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <img src="img/header.jpg">
+    </div>
+    <nav>
+      <div class="nav nav-pills nav-stacked menu2">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="vehicle assignment.html">Vehicle Assignment</a>
+          </li>
+          <li>
+            <a href="record returns.html">Record Returns</a>
+          </li>
+          <li>
+            <a href="track vehicles.html">Track Vehicles</a>
+          </li>
+          <li>
+            <a href="Details Management.html">Details Management</a>
+          </li>
+          <li>
+            <a href="Schedules Management.html">Schedules Management</a>
+          </li>
+          <li>
+            <a href="#">Reports</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            <button class="btn btn-large btn-primary btb">Create Schedule</button>
+        </div>
+        <div class="col-xs-6">
+          <div class="tab">
+            <button class="tablinks" onclick="document.getElementById('London').style.display='block'; refreshData('Kotahena East');">Kotahena East</button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">Modara</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Mattakkuliya</button>
+            <button class="tablinks" onclick="openCity(event, 'London')">Kollupitiya</button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">Wellampitiya</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Kotahena west</button>
+            <button class="tablinks" onclick="openCity(event, 'London')">Hettiyawaththa</button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">Pettah</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Mahawaththa</button>
+          </div>
+        </div>
+    </div>
+    <div id="London" class="tabcontent">
+      <table class="table" id="table1" >
+        <thead>
+          <tr>
+            <th>Name of the Road</th>
+            <th>Collection Program</th>
+          </tr>
+        </thead>
+        <tbody>
+        </body>
+      </table>
+    </div>
+  </div>  
+
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/schedule.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+
+  </body>
+</html>
