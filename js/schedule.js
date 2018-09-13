@@ -16,7 +16,7 @@ var config = {
 	//	table.removeChild(table.firstChild);
     //}
    
-	dbRefObject = firebase.database().ref().child('/Schedule/Kotahena West/');
+	dbRefObject = firebase.database().ref().child('/Schedule/'+roadName+'/');
 	dbRefObject.on('child_added', snap => {
         var Rname = snap.key;
         var Ctime = snap.child("time").val();
