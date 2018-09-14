@@ -71,10 +71,16 @@
   <div class="container">
     <div class="row">
         <div class="col-xs-3">
-            <button class="btn btn-large btn-primary btb">Create Schedule</button>
+            <button class="btn btn-large btn-primary btb" onclick="document.getElementById('form-style-8').style.display='block'">Create Schedule</button><br>
+            <div class="verttab">
+              <button class="tablinks" onclick="document.getElementById('district1').style.display='block'">District 1</button><br>
+              <button class="tablinks" onclick="openCity(event, 'Paris')">District 2A</button><br>
+              <button class="tablinks" onclick="openCity(event, 'Paris')">District 2B</button><br>
+              <button class="tablinks" onclick="openCity(event, 'Paris')">District 3</button>
+            </div>
         </div>
         <div class="col-xs-6">
-          <div class="tab">
+          <div class="tab" id="district1" style="display:none;">
             <button class="tablinks" onclick="document.getElementById('London').style.display='block'; refreshData('Kotahena West');">Kotahena West</button>
             <button class="tablinks" onclick="openCity(event, 'Paris')">Modara</button>
             <button class="tablinks" onclick="openCity(event, 'Tokyo')">Mattakkuliya</button>
@@ -85,21 +91,59 @@
             <button class="tablinks" onclick="openCity(event, 'Paris')">Pettah</button>
             <button class="tablinks" onclick="openCity(event, 'Tokyo')">Mahawaththa</button>
           </div>
+
+          <div id="London" class="tabcontent">
+            <table class="table" id="table1" >
+              <thead>
+                <tr>
+                  <th>Name of the Road</th>
+                  <th>Collection Program</th>
+                </tr>
+              </thead>
+              <tbody>
+              </body>
+            </table>
+          </div>
+
+          <<div class="form-style-8" id="form-style-8" style="display:none;">
+            <h2>Create a new Schedule</h2>
+            <form>
+              <select id="district">
+                <option>District 1</option>
+                <option>District 2A</option>
+                <option>District 2B</option>
+                <option>District 3</option>
+              </select>
+              <div class="form-group" style="">
+                <input type="text" name="field1" placeholder="Road Name" />
+                <input type="email" name="field2" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" name="field3" placeholder="Road Name" />
+                <input type="email" name="field4" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" name="field5" placeholder="Road Name" />
+                <input type="email" name="field6" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" name="field7" placeholder="Road Name" />
+                <input type="email" name="field8" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" name="field9" placeholder="Road Name" />
+                <input type="email" name="field10" placeholder="Times of collection"/>
+              </div>
+                
+              <input type="button" value="Save" onclick="SaveNewSchedule()" />
+            </form>
+          </div>
+
+        </div> 
         </div>
     </div>
-    <div id="London" class="tabcontent">
-      <table class="table" id="table1" >
-        <thead>
-          <tr>
-            <th>Name of the Road</th>
-            <th>Collection Program</th>
-          </tr>
-        </thead>
-        <tbody>
-        </body>
-      </table>
-    </div>
-  </div>  
+
+    
 
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
