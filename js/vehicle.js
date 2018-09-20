@@ -217,7 +217,12 @@ function refreshData()
 	dbRefObject.on('value', snap => {
 		data = snap.val();
 		for(var r in data) {
-			var row = table.insertRow(-1);
+      var row = table.insertRow(-1);
+      var btn = document.createElement('input');
+      btn.type = "button";
+      btn.className = "btndelete";
+      btn.onclick = (function() {})();
+      row.appendChild(btn);
 			for(var c in data[r]) {
 				cell = row.insertCell(-1);
 				cell.innerHTML = data[r][c];
