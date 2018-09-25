@@ -53,13 +53,13 @@
             <a href="track vehicles.html">Track Vehicles</a>
           </li>
           <li>
-            <a href="#">Details Management</a>
+            <a href="Details Management.html">Details Management</a>
           </li>
           <li>
-            <a href="#">Schedules Management</a>
+            <a href="Schedules Management.html">Schedules Management</a>
           </li>
           <li>
-            <a href="#">Reports</a>
+            <a href="reports.html">Reports</a>
           </li>
         </ul>
       </div>
@@ -70,7 +70,7 @@
 
 <body>
     <style>
-        #tbl_users_list {
+        #tbl_users_list,#tbl_workers_list {
             border-collapse: collapse;
             width: 100%;
         }
@@ -80,16 +80,16 @@
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        #tbl_users_list th {
+        #tbl_users_list th,#tbl_workers_list th {
           padding-top: 12px;
           padding-bottom: 12px;
           text-align: left;
           background-color: #4CAF50;
           color: white;
         }
-        #tbl_users_list tr:nth-child(even){background-color: #f2f2f2;}
+        #tbl_users_list tr:nth-child(even),#tbl_workers_list tr:nth-child(even){background-color: #f2f2f2;}
 
-        #tbl_users_list tr:hover {background-color: #ddd;}
+        #tbl_users_list tr:hover,#tbl_workers_list tr:hover{background-color: #ddd;}
         </style>
   <div class="container">
     <table>
@@ -115,9 +115,9 @@
       </tr>
       <tr>
        <td colspan="2">
-        <input type="button" value="Save" onclick="save_user();" />
-        <input type="button" value="Update" onclick="update_user();" />
-        <input type="button" value="Delete" onclick="delete_user();" />
+        <input type="button" class="btn btn-primary" value="Save" onclick="save_user();" />
+        <input type="button" class="btn btn-success" value="Update" onclick="update_user();" />
+        <input type="button" class="btn btn-danger" value="Delete" onclick="delete_user();" />
        </td>
       </tr>
      </table>
@@ -125,6 +125,56 @@
      <h3 style="color:black">Drivers List</h3>
 
      <table id="tbl_users_list" border="1">
+      <tr>
+       <th>#ID</th>
+       <th>FIRST NAME</th>
+       <th>LAST NAME</th>
+       <th>TELEPHONE NUMBER</th>
+       <th>NIC</th>
+      </tr>
+     </table>
+  </div>
+
+  <hr style="
+  border-color:black; 
+  height:8px;
+  border-width: 5px;
+  border-style: solid;
+  background-color: black;">
+  <div class="container">
+    <table>
+      <tr>
+       <td>Id: </td>
+       <td><input type="text" name="id" id="worker_id" onkeypress="LoadworkerFunction()" /></td>
+      </tr>
+      <tr>
+       <td>First Name: </td>
+       <td><input type="text" name="user_name" id="worker_fname" /></td>
+      </tr>
+      <tr>
+        <td>Last Name: </td>
+        <td><input type="text" name="last_name" id="worker_lname" /></td>
+      </tr>
+      <tr>
+        <td>Telephone: </td>
+        <td><input type="text" name="tp" id="worker_tp" /></td>
+      </tr>
+      <tr>
+        <td>NIC: </td>
+        <td><input type="text" name="nic" id="worker_nic" /></td>
+      </tr>
+      <tr>
+       <td colspan="2">
+        <input type="button" class="btn btn-primary" value="Save" onclick="save_worker();" />
+        <input type="button" class="btn btn-success" value="Update" onclick="update_worker();" />
+        <input type="button" class="btn btn-danger" value="Delete" onclick="delete_worker();" />
+       </td>
+      </tr>
+     </table>
+
+     <h3 style="color:black">Workers List</h3>
+
+     <table id="tbl_workers_list" border="1">
       <tr>
        <th>#ID</th>
        <th>FIRST NAME</th>

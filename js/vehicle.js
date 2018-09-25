@@ -242,3 +242,8 @@ $(document).ready(function(){
   });
 });
 
+//delete rows in the table
+$('#table1').on('click', 'input[class="btndelete"]', function () {
+  $(this).closest('tr').remove();
+})
+
