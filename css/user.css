@@ -41,46 +41,63 @@
     height: 300px;
 }
 
+/*COunting bubbles*/
+
 #shiva
 {
-  width: 150px;
+  width: 300px;
 	height: 150px;
-	background: red;
+	background: white;
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
-  float:right;
-  margin:5px;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
 }
 .count
 {
   line-height: 100px;
-  color:white;
-  margin-left:30px;
-  font-size:25px;
+  color:rgb(3, 207, 37);
+  text-align: center;
+  position: absolute;
+  font-size:70px;
+  margin-left: 60px;
 }
-#talkbubble {
-   width: 170px;
-   height: 130px;
-   background: rgb(0, 255, 42);
-   position: relative;
-   -moz-border-radius:    10px;
-   -webkit-border-radius: 10px;
-   border-radius:         10px;
-  float:right;
-  margin:20px;
+
+.user
+{
+  line-height: 100px;
+  color:rgb(3, 207, 37);
+  text-align: center;
+  position: absolute;
+  font-size:20px;
+  margin-left: 60px;
+  margin-top: 30px;
 }
-#talkbubble:before {
-   content:"";
-   position: absolute;
-   right: 100%;
-   top: 26px;
-   width: 0;
-   height: 0;
-   border-top: 13px solid transparent;
-   border-right: 26px solid rgb(0, 255, 42);
-   border-bottom: 13px solid transparent;
+
+.countInquiry
+{
+  line-height: 100px;
+  color:rgb(236, 37, 37);
+  text-align: center;
+  position: absolute;
+  font-size:70px;
+  margin-left: 60px;
 }
+
+.userInquiry
+{
+  line-height: 100px;
+  color:rgb(236, 37, 37);
+  text-align: center;
+  position: absolute;
+  font-size:20px;
+  margin-left: 60px;
+  margin-top: 30px;
+}
+
 
 .linker
 {

@@ -58,6 +58,37 @@ function SaveNewSchedule(){
         SaveDbRef.child(block).child(name1).set({
             "time":collection1
         });
+        SaveDbRef.child(block).child(name2).set({
+            "time":collection2
+        });
+        SaveDbRef.child(block).child(name3).set({
+            "time":collection3
+        });
+        SaveDbRef.child(block).child(name4).set({
+            "time":collection4
+        });
+        SaveDbRef.child(block).child(name5).set({
+            "time":collection5
+        });
+        alert("Schedule Saved Successfully");
+
+        var divId  = document.getElementById("district1");
+        var button = document.createElement("button");
+        button.value = block;
+        $(button).addClass('tablinks');
+        button.innerHTML = block;
+        button.onclick = function () { 
+            document.getElementById('London').style.display='block';
+            refreshData(block);
+
+
+
+
+        };
+           
+        
+        divId.appendChild(button);
+        alert("button added");
     }
 
 }

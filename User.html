@@ -73,36 +73,49 @@
       <div class="col-sm-8" style="float:left;">
         <h3 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Recently Reported Problems</h3>
         <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen" style="font-size: 20px;">Kollupitiya
+          <br><span id="street" style="font-size: 15px;">Sangaraja Mawatha</span><span id="time" style="font-size: 15px; margin-left: 5px;">2h ago</span></button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')" style="font-size: 20px;">Hettiyawaththa
+          <br><span id="street" style="font-size: 15px;">st benedicts street</span><span id="time" style="font-size: 15px; margin-left: 5px;">3h ago</span></button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')" style="font-size: 20px;">Kotahena
+          <br><span id="street" style="font-size: 15px;">1st cross street</span><span id="time" style="font-size: 15px; margin-left: 5px;">5h ago</span></button>
       </div>
       
       <div id="London" class="tabcontent">
         <h3>Potholes</h3>
-        <button>View Details</button>
-        <button>Solved</button>
-        <button>Urgent</button>
-        <button>Remove</button>
-        <p>London is the capital city of England.</p>
+        <button class="btn btn-info">View Details</button>
+        <button class="btn btn-success">Solved</button>
+        <button class="btn btn-danger">Urgent</button>
+        <button class="btn btn-warning">Remove</button>
+        <p>Reported by an anonymous user</p>
         <img style="width:370px;height:180px;" src="img/1pothole-727x485.jpg">
         
       </div>
       
       <div id="Paris" class="tabcontent">
-        <h3>Broken Roads</h3>
-        <p>Paris is the capital of France.</p> 
+        <h3>Garbage on the Road</h3>
+        <button>View Details</button>
+        <button>Solved</button>
+        <button>Urgent</button>
+        <button>Remove</button>
+        <p>Reported by an anonymous user</p>
+        <img style="width:370px;height:180px;" src="img/1pothole-727x485.jpg">
       </div>
       
       <div id="Tokyo" class="tabcontent">
-        <h3>Garbage on the Road</h3>
-        <p>Tokyo is the capital of Japan.</p>
+        <h3>Fallen Trees</h3>
+        <button>View Details</button>
+        <button>Solved</button>
+        <button>Urgent</button>
+        <button>Remove</button>
+        <p>Reported by an anonymous user</p>
+        <img style="width:370px;height:180px;" src="img/1pothole-727x485.jpg">
       </div>
     </div>
 
-    <div class="col-sm-4" style="float:right;">
-      <div id="talkbubble"><span class="count">1421</span></div>
-      <div id="shiva"><span class="count">154</span></div>
+    <div class="col-sm-4" style="float:right;background-color: grey;">
+      <div id="shiva"><span class="count">1421</span><br><span class="user">User Registrations</span></div>
+      <div id="shiva"><span class="countInquiry">34</span><br><span class="userInquiry">Inquiries Today..!!!!!</span></div>
     </div>
 
   </div>
