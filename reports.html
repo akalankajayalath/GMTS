@@ -10,6 +10,7 @@
   <link href="css/font-awesome.css" rel="stylesheet"><!-- Custom styles -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/report.css" rel="stylesheet">
+  <link href="css/printReport.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/jspdf.debug.js"></script>
@@ -43,7 +44,7 @@
       <img src="img/header.jpg">
     </div>
     <nav>
-      <div class="nav nav-pills nav-stacked menu2">
+      <div class="nav nav-pills nav-stacked menu2 no-print">
         <ul class="nav navbar-nav">
           <li>
             <a href="vehicle assignment.html">Vehicle Assignment</a>
@@ -63,6 +64,9 @@
           <li>
             <a href="reports.html">Reports</a>
           </li>
+          <li>
+              <a href="remove.html">Remove/Update Data</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -74,8 +78,12 @@
     
       <div class="row">
           
-          <div>
-              <select id="reportType" onchange="showDiv(this)">
+          <div class="no-print">
+              <div style="margin-left:350px;">
+              <label>Select your Report type</label>
+              <select id="reportType" onchange="showDiv(this)" >
+              </div>
+                <option>Select : </option>
                 <option value ="0">Daily Assignment Summary</option>
                 <option value="1">Full Worker Report</option>
                 <option value="2">Schedules Report</option>
@@ -88,10 +96,11 @@
               <form class="modal-content animate">
                 <div class="container">
                   <input type="text" id="AssignmentInput" placeholder="Search..." title="Type in a name">
-                  <button onclick="demoFromHTML()" style="width:10%">PDF</button>
+                  <button type="button" onclick="AssignmentFromHTML()" style="width:10%;">PDF</button>
                   <button type="button" onclick="document.getElementById('AssignmentSummary').style.display='none'" class="cancelbtn" style="width:10%">Cancel</button>
                   <br>
-                  <table class="table" id="table0" >
+                  <div id="divAssignment">
+                  <table class="table" id="table0" border="1" cellpadding="5" >
                     <thead>
                       <tr>
                         <th>Depot</th>
@@ -107,7 +116,8 @@
                     </thead>
                     <tbody>
                     </body>
-                  </table>  
+                  </table> 
+                </div> 
                 </div>
               </form>
             </div>
@@ -116,8 +126,10 @@
               <form class="modal-content animate">
                 <div class="container">
                   <input type="text" id="FullWorkersInput" placeholder="Search..." title="Type in a name">
+                  <button type="button" onclick="FullWorkersFromHTML()" style="width:10%;">PDF</button>
                   <button type="button" onclick="document.getElementById('FullWorkers').style.display='none'" class="cancelbtn">Cancel</button><br> 
-                  <table class="table" id="table1" >
+                  <div id="divWorker">
+                  <table class="table" id="table1" border="1" cellpadding="5" >
                     <thead>
                       <tr>
                         <th>First Name</th>
@@ -129,7 +141,8 @@
                     </thead>
                     <tbody>
                     </body>
-                  </table>  
+                  </table>
+                </div>  
                 </div>
               </form>
             </div>
@@ -137,20 +150,13 @@
             <div id="Schedules" class="modal" style="width: 100%;margin-top: 280px;">
               <form class="modal-content animate">
                 <div class="container">
-                  <input type="text" id="vehicleInput" placeholder="Search..." title="Type in a name">
+                  <input type="text" id="SchedulesInput" placeholder="Search..." title="Type in a name">
                   <button type="button" onclick="document.getElementById('Schedules').style.display='none'" class="cancelbtn">Cancel</button><br>
                   <table class="table" id="table2" >
                     <thead>
                       <tr>
-                        <th>Depot</th>
-                        <th>Driver</th>
-                        <th>Helper One</th>
-                        <th>Helper Two</th>
-                        <th>Helper Three</th>
-                        <th>Route</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Vehicle Number</th>
+                        <th>Road Name</th>
+                        <th>Collection time</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -164,24 +170,21 @@
               <form class="modal-content animate">
                 <div class="container">
                   <input type="text" id="vehicleInput" placeholder="Search..." title="Type in a name">
+                  <button type="button" onclick="fullVehiclesFromHTML()" style="width:10%;">PDF</button>
                   <button type="button" onclick="document.getElementById('fullVehicles').style.display='none'" class="cancelbtn">Cancel</button><br>
-                  <table class="table" id="table3" >
+                  <div id="divVehicle">
+                  <table class="table" id="table3" border="1" cellpadding="5" >
                     <thead>
                       <tr>
                         <th>Depot</th>
-                        <th>Driver</th>
-                        <th>Helper One</th>
-                        <th>Helper Two</th>
-                        <th>Helper Three</th>
-                        <th>Route</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Vehicle Number</th>
+                        <th>Number</th>
+                        <th>Type</th>
                       </tr>
                     </thead>
                     <tbody>
                     </body>
-                  </table>  
+                  </table>
+                </div>  
                 </div>
               </form>
             </div>
@@ -189,26 +192,33 @@
             <div id="Returns" class="modal" style="width: 100%;margin-top: 280px;">
               <form class="modal-content animate">
                 <div class="container">
-                  <input type="text" id="vehicleInput" placeholder="Search..." title="Type in a name">
-                  <button type="button" onclick="document.getElementById('Returns').style.display='none'" class="cancelbtn">Cancel</button> 
+                  <input type="text" id="ReturnsInput" placeholder="Search..." title="Type in a name" class="no-print">
+                  <button type="button" onclick="ReturnsFromHTML();" style="width:10%;" class="no-print">PDF</button>
+                  <button type="button" onclick="document.getElementById('Returns').style.display='none'" class="cancelbtn no-print">Cancel</button> 
                 <br>
-                  <table class="table" id="table4" >
+                  <div id="divToPrint">
+                  <table class="table" id="table4" border="1" cellpadding="1" >
                     <thead>
                       <tr>
-                        <th>Depot</th>
-                        <th>Driver</th>
+                        <th>Driver Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
                         <th>Helper One</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
                         <th>Helper Two</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
                         <th>Helper Three</th>
-                        <th>Route</th>
-                        <th>Date</th>
-                        <th>Time</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
                         <th>Vehicle Number</th>
                       </tr>
                     </thead>
                     <tbody>
                     </body>
-                  </table>  
+                  </table> 
+                </div> 
                 </div>
               </form>
             </div>

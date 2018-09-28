@@ -67,12 +67,102 @@ function showDiv(element){
     }
     else if(element.value == 2){
         document.getElementById("Schedules").style.display = "block";
+        var table = document.querySelector('#table2 tbody');
+        
+        while(table.hasChildNodes()) {
+            table.removeChild(table.firstChild);
+        }
+        const dbRefObjectSchedules = firebase.database().ref().child('/Schedule/District1/Kotahena West/');
+        dbRefObjectSchedules.on('value', snap => {
+            data = snap.val();
+            for(var r in data) {
+          var row = table.insertRow(-1);   
+                for(var c in data[r]) {
+                    cell = row.insertCell(-1);
+                    cell.innerHTML = data[r][c];
+                }
+            }
+        });
+        //search function
+        $(document).ready(function(){
+          $("#SchedulesInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table2 tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
     }
     else if(element.value == 3){
         document.getElementById("fullVehicles").style.display = "block";
+        
+        var table = document.querySelector('#table3 tbody');
+        
+        while(table.hasChildNodes()) {
+            table.removeChild(table.firstChild);
+        }
+        const dbRefObjectVehicles = firebase.database().ref().child('Vehicles');
+        dbRefObjectVehicles.on('value', snap => {
+            data = snap.val();
+            for(var r in data) {
+          var row = table.insertRow(-1);   
+                for(var c in data[r]) {
+                    cell = row.insertCell(-1);
+                    cell.innerHTML = data[r][c];
+                }
+            }
+        });
+        //search function
+        $(document).ready(function(){
+          $("#vehicleInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table3 tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
     }
     else if(element.value == 4){
         document.getElementById("Returns").style.display = "block";
+        
+        var table = document.querySelector('#table4 tbody');
+        
+        while(table.hasChildNodes()) {
+            table.removeChild(table.firstChild);
+        }
+        const dbRefObjectReturns = firebase.database().ref().child('Returns');
+        dbRefObjectReturns.once('value', function(snapshot){
+            if(snapshot.exists()){
+                var content = '';
+                snapshot.forEach(function(data){
+                    var val = data.val();
+                    content +='<tr>';
+                    content += '<td>' + val.DriverName + '</td>';
+                    content += '<td>' + val.DriverStartTime + '</td>';
+                    content += '<td>' + val.DriverTime + '</td>';
+                    content += '<td>' + val.HelperOneName + '</td>';
+                    content += '<td>' + val.HelperOneStartTime + '</td>';
+                    content += '<td>' + val.HelperOneTime + '</td>';
+                    content += '<td>' + val.HelperTwoName + '</td>';
+                    content += '<td>' + val.HelperTwoStartTime + '</td>';
+                    content += '<td>' + val.HelperTwoTime + '</td>';
+                    content += '<td>' + val.HelperThreeName + '</td>';
+                    content += '<td>' + val.HelperThreeStartTime + '</td>';
+                    content += '<td>' + val.HelperThreeTime + '</td>';
+                    content += '<td>' + val.VehicleNum + '</td>';
+                    content += '</tr>';
+                });
+                $('#table4').append(content);
+            }
+        });
+        $(document).ready(function(){
+          $("#ReturnsInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table4 tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
     }
 }
 
@@ -83,42 +173,74 @@ window.onclick = function(event) {
 }
 /* report printing in PDF */
 
-function demoFromHTML() {
-    var pdf = new jsPDF('p', 'pt', 'letter');
-    // source can be HTML-formatted string, or a reference
-    // to an actual DOM element from which the text will be scraped.
-    source = $('#AssignmentSummary')[0];
+function AssignmentFromHTML() {
+    var mywindow = window.open("");
 
-    // we support special element handlers. Register them with jQuery-style 
-    // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-    // There is no support for any other type of selectors 
-    // (class, of compound) at this time.
-    specialElementHandlers = {
-        // element with id of "bypass" - jQuery style selector
-        '#bypassme': function (element, renderer) {
-            // true = "handled elsewhere, bypass text extraction"
-            return true
-        }
-    };
-    margins = {
-        top: 80,
-        bottom: 60,
-        left: 40,
-        width: 522
-    };
-    // all coords and widths are in jsPDF instance's declared units
-    // 'inches' in this case
-    pdf.fromHTML(
-    source, // HTML string or DOM elem ref.
-    margins.left, // x coord
-    margins.top, { // y coord
-        'width': margins.width, // max width of content on PDF
-        'elementHandlers': specialElementHandlers
-    },
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >'); 
+    mywindow.document.write('<h1>'+"Daily Assignment Report"+'</h1>');
+    mywindow.document.write(document.getElementById('divAssignment').innerHTML);
+    mywindow.document.write('</body></html>');
 
-    function (dispose) {
-        // dispose: object with X, Y of the last line add to the PDF 
-        //          this allow the insertion of new lines after html
-        pdf.save('Test.pdf');
-    }, margins);
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+
+function FullWorkersFromHTML() {
+    var mywindow = window.open("");
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >'); 
+    mywindow.document.write('<h1>'+"Drivers Details"+'</h1>');
+    mywindow.document.write(document.getElementById('divWorker').innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+
+function fullVehiclesFromHTML() {
+    var mywindow = window.open("");
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >'); 
+    mywindow.document.write('<h1>'+"Vehicles Details"+'</h1>');
+    mywindow.document.write(document.getElementById('divVehicle').innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+
+function ReturnsFromHTML() {   
+    var mywindow = window.open("");
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >'); 
+    mywindow.document.write('<h1>'+"Vehicle Returns Report"+'</h1>');
+    mywindow.document.write(document.getElementById('divToPrint').innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
 }

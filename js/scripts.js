@@ -10,6 +10,16 @@
   };
   firebase.initializeApp(config);
 
+/* 
+//Remove all the data that is alder than 24 hours
+var ref = firebase.database().ref('/Assignment/');
+var now = Date.now();
+var cutoff = now - 24 * 60 * 60 * 1000;
+var old = ref.orderByChild('timestamp').endAt(cutoff).limitToLast(1);
+var listener = old.on('child_added', function(snapshot) {
+    snapshot.ref.remove();
+});
+*/
 
  var tblUsers = document.getElementById('tbl_users_list');
   var databaseRef = firebase.database().ref('users/driver');

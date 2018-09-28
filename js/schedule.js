@@ -80,15 +80,39 @@ function SaveNewSchedule(){
         button.onclick = function () { 
             document.getElementById('London').style.display='block';
             refreshData(block);
-
-
-
-
         };
-           
-        
+
         divId.appendChild(button);
         alert("button added");
     }
+
+}
+
+
+
+function onchangefunction(){
+    var variable = document.getElementById('updateDistrict').value;
+    var blockvalue = document.getElementById('blockname').value;
+    const rootref5 = firebase.database().ref().child('/Schedule/'+variable+'/');
+    $("#blockname").empty();
+  rootref5.on("child_added",snap =>{
+    var block = snap.key;
+    
+    $("#blockname").append('<option>'+block+'</option>');
+  });
+
+ 
+  const rootref6 = firebase.database().ref().child('/Schedule/'+variable+'/'+blockvalue+'/');
+  rootref6.once("value",snap =>{
+    data = snap.val();
+    console.log(data);
+    console.log(data.key);
+    //$("#updatefield1").append(+data[0].key);
+    //$("#updatefield2").append(+data[0].time);
+  });
+  
+}
+
+function UpdateSchedule(){
 
 }

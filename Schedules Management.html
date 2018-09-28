@@ -63,6 +63,9 @@
           <li>
             <a href="reports.html">Reports</a>
           </li>
+          <li>
+              <a href="remove.html">Remove/Update Data</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -71,7 +74,8 @@
   <div class="container">
     <div class="row">
         <div class="col-xs-3">
-            <button class="btn btn-large btn-primary btb" onclick="document.getElementById('form-style-8').style.display='block'">Create Schedule</button><br>
+            <button class="btn btn-large btn-primary btb" onclick="document.getElementById('form-style-8').style.display='block'">Create Schedule</button><br><br>
+            <button class="btn btn-large btn-primary btb" onclick="document.getElementById('form-style-9').style.display='block'">Update Schedule</button><br><br>
             <div class="verttab">
               <button class="tablinks" onclick="document.getElementById('district1').style.display='block'">District 1</button><br>
               <button class="tablinks" onclick="openCity(event, 'Paris')">District 2A</button><br>
@@ -105,7 +109,7 @@
             </table>
           </div>
 
-          <<div class="form-style-8" id="form-style-8" style="display:none;">
+          <div class="form-style-8" id="form-style-8" style="display:none;">
             <h2>Create a new Schedule</h2>
             <form>
               <select id="district">
@@ -140,6 +144,48 @@
               </div>
 
               <input type="button" value="Save" onclick="SaveNewSchedule()" />
+              <input type="button" value="Cancel" onclick="document.getElementById('form-style-8').style.display='none';" />
+            </form>
+          </div>
+
+          <div class="form-style-9" id="form-style-9" style="display:none;">
+            <h2>Update Schedule</h2>
+            <form>
+              <label>Select District</label>
+              <select id="updateDistrict" onchange="onchangefunction()">
+                <option>District 1</option>
+                <option>District 2A</option>
+                <option>District 2B</option>
+                <option>District 3</option>
+              </select>
+              <div class="form-group" style="">
+                <label>Block Name</label>
+                <select id="blockname" class="blockname">
+  	
+                  </select>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" id="updatefield1" placeholder="Road Name" />
+                <input type="email" id="updatefield2" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" id="updatefield3" placeholder="Road Name" />
+                <input type="email" id="updatefield4" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" id="updatefield5" placeholder="Road Name" />
+                <input type="email" id="updatefield6" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" id="updatefield7" placeholder="Road Name" />
+                <input type="email" id="updatefield8" placeholder="Times of collection"/>
+              </div>
+              <div class="form-group" style="">
+                <input type="text" id="updatefield9" placeholder="Road Name" />
+                <input type="email" id="updatefield10" placeholder="Times of collection"/>
+              </div>
+
+              <input type="button" value="Save" onclick="UpdateSchedule()" />
               <input type="button" value="Cancel" onclick="document.getElementById('form-style-8').style.display='none';" />
             </form>
           </div>

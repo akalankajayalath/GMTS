@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CMC - Vehicle Assignment</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet"><!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet"><!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet"><!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/remove.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<header>
+    <nav class="navbar navbar-default navmain">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="login.html" style="color: white" >Colombo Municipal Council <b style="font-style: italic;font-size: 15px;">>>> Remove Data Page</b></a>
+        </div>
+        <div class="menu1">
+
+            <iframe src="http://free.timeanddate.com/clock/i6a4daug/n5364/ftb/tt0/tw0/tm1/th2/ta1/tb4" frameborder="0" width="108" height="34" style="margin-top: 8px; margin-left: 10px;"></iframe>
+
+          <ul class="nav navbar-nav">
+            <li>
+              <a style="color: white" href="#" >About Us</a>
+            </li>
+            <li>
+              <a href="User.html" style="color: white">User Management</a>
+            </li>
+            <li>
+              <a href="#" onclick="logout()" style="color: white">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <img src="img/header.jpg">
+    </div>
+    <nav>
+      <div class="nav nav-pills nav-stacked menu2">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="vehicle assignment.html">Vehicle Assignment</a>
+          </li>
+          <li>
+            <a href="record returns.html">Record Returns</a>
+          </li>
+          <li>
+            <a href="track vehicles.html">Track Vehicles</a>
+          </li>
+          <li>
+            <a href="Details Management.html">Details Management</a>
+          </li>
+          <li>
+            <a href="Schedules Management.html">Schedules Management</a>
+          </li>
+          <li>
+            <a href="reports.html">Reports</a>
+          </li>
+          <li>
+              <a href="remove.html">Remove/Update Data</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="container">
+      <div class="row">
+        <div>
+          <button style="width:250px;" class="btn btn-danger">Remove Route</button>
+          <button style="width:250px;" class="btn btn-danger">Update Route</button>
+          <input type="text" id="removeRoute" style="width:250px; margin-left: 20px;" placeholder="Enter Route Name">
+        </div><br>
+        <div>
+          <button style="width:250px;" class="btn btn-danger">Remove Vehicle</button>
+          <input type="text" id="removeVehicle" style="width:250px; margin-left: 271px;" placeholder="Enter Vehicle Name">
+        </div><br>
+        <div>
+            <button style="width:250px;" class="btn btn-danger">Remove Depot</button>
+            <input type="text" id="removeDepot" style="width:250px; margin-left: 271px;" placeholder="Enter Depot Name">
+        </div><br>
+        <div>Select Data Type to View
+          <select id="dataType" onchange="ShowDiv(this)">
+            <option >Select : </option>
+            <option value="0">Route</option>
+            <option value="1">Vehicle</option>
+            <option value="2">Depot</option>
+          </select>
+        </div>
+
+        <div id="showDetails0" class="modal" style="width: 100%; margin-top: 320px;overflow: auto;">
+            <form class="modal-content animate">
+              <div class="container">
+                <input type="text" id="routeInput" placeholder="Search..." title="Type in a name">
+                <button type="button" onclick="document.getElementById('showDetails0').style.display='none'" class="cancelbtn">Cancel</button><br> 
+                <div id="divWorker">
+                <table class="table" id="table0" border="1" cellpadding="5" >
+                  <thead>
+                    <tr>
+                      <th>Route Name</th>
+                      <th>Depot Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </body>
+                </table>
+              </div>  
+              </div>
+            </form>
+          </div>
+
+          <div id="showDetails1" class="modal" style="width: 100%; margin-top: 320px;overflow: auto;">
+              <form class="modal-content animate">
+                <div class="container">
+                  <input type="text" id="depotInput" placeholder="Search..." title="Type in a name">
+                  <button type="button" onclick="document.getElementById('showDetails1').style.display='none'" class="cancelbtn">Cancel</button><br> 
+                  <div id="divWorker">
+                  <table class="table" id="table1" border="1" cellpadding="5" >
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </body>
+                  </table>
+                </div>  
+                </div>
+              </form>
+            </div>
+
+            <div id="showDetails2" class="modal" style="width: 100%; margin-top: 320px;overflow: auto;">
+                <form class="modal-content animate">
+                  <div class="container">
+                    <input type="text" id="vehicleInput" placeholder="Search..." title="Type in a name">
+                    <button type="button" onclick="document.getElementById('showDetails2').style.display='none'" class="cancelbtn">Cancel</button><br> 
+                    <div id="divWorker">
+                    <table class="table" id="table2" border="1" cellpadding="5" >
+                      <thead>
+                        <tr>
+                          <th>Depot Name</th>
+                          <th>Number</th>
+                          <th>Type</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </body>
+                    </table>
+                  </div>  
+                  </div>
+                </form>
+              </div>
+
+      </div>
+   </div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<script type="text/javascript" src="js/remove.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</body>
+</html>
