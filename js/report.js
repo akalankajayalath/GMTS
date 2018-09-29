@@ -196,7 +196,7 @@ function FullWorkersFromHTML() {
 
     mywindow.document.write('<html><head><title>' + document.title  + '</title>');
     mywindow.document.write('</head><body >'); 
-    mywindow.document.write('<h1>'+"Drivers Details"+'</h1>');
+    mywindow.document.write('<h1>'+"Drivers Detailed Report"+'</h1>');
     mywindow.document.write(document.getElementById('divWorker').innerHTML);
     mywindow.document.write('</body></html>');
 

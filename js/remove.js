@@ -96,4 +96,15 @@
         });
     }
   }
+
+function  removeRoute(){
+    var route = document.getElementById("removeRoute").value;
+    var key;
+    const databaseRef = firebase.database().ref().child('Route');
+    databaseRef.orderByChild('name').equalTo(route).on('child_added', function(snap) {
+        key = snap.key;
+      });
+    firebase.database().ref().child('/Route/' + key).remove();
+    alert('The user is deleted successfully!');
+}
   

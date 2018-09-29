@@ -19,7 +19,7 @@
     <nav class="navbar navbar-default navmain">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#" style="color: white" >Colombo Municipal Council <b style="font-style: italic;font-size: 15px;">>>> Details Management Page</b></a>
+          <a class="navbar-brand" href="Main.html" style="color: white" >Colombo Municipal Council <b style="font-style: italic;font-size: 15px;">>>> Details Management Page</b></a>
         </div>
         <div class="menu1">
             <iframe src="http://free.timeanddate.com/clock/i6a4daug/n5364/ftb/tt0/tw0/tm1/th2/ta1/tb4" frameborder="0" width="108" height="34" style="margin-top: 8px; margin-left: 10px;"></iframe>
@@ -96,34 +96,36 @@
         </style>
   <div class="container">
     <table>
+      <form action="" method="">
       <tr>
        <td>Id: </td>
-       <td><input type="text" name="id" id="user_id" onkeypress="LoadFunction()" /></td>
+       <td><input type="text" name="id" id="user_id" onkeypress="LoadFunction()" required /></td>
       </tr>
       <tr>
        <td>First Name: </td>
-       <td><input type="text" name="user_name" id="user_name" /></td>
+       <td><input type="text" name="user_name" id="user_name"  required/></td>
       </tr>
       <tr>
         <td>Last Name: </td>
-        <td><input type="text" name="last_name" id="last_name" /></td>
+        <td><input type="text" name="last_name" id="last_name" required /></td>
       </tr>
       <tr>
         <td>Telephone: </td>
-        <td><input type="text" name="tp" id="tp" /></td>
+        <td><input type="text" name="tp" id="tp" required /></td>
       </tr>
       <tr>
         <td>NIC: </td>
-        <td><input type="text" name="nic" id="nic" /></td>
+        <td><input type="text" name="nic" id="nic" required /></td>
       </tr>
       <br>
       <tr>
        <td colspan="2"><br>
-        <input type="button" class="btn btn-primary" value="Save" onclick="save_user();" />
+        <input type="button" class="btn btn-primary" value="submit" onclick="save_user();" />
         <input type="button" class="btn btn-success" value="Update" onclick="update_user();" />
         <input type="button" class="btn btn-danger" value="Delete" onclick="delete_user();" />
        </td>
       </tr>
+    </form>
      </table>
 
      <h3 style="color:black">Drivers List</h3>
